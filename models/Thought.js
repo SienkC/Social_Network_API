@@ -21,7 +21,8 @@ const thoughtSchema = new Schema(
             // default value is current timestamp
             default: Date.now,
             // getter method to format the timestamp on query
-            get: (time) => formatTimeStamp(time)
+            get: time => formatTimeStamp(time)
+            // get: () => {return 'hello'}
         },
         username: {
             type: String,
