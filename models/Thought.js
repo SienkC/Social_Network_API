@@ -1,3 +1,50 @@
+const { Schema, model } = require('mongoose');
+
+// get reaction schema to use in thought schema
+const reactionSchema = require('./Reaction');
+
+// get util for formatting date
+const formatTimeStamp = require('');
+
+
+const thoughtSchema = new Schema(
+    {
+        thoughtText: {
+            type: String,
+            required: true,
+            // Must be between 1 and 280 characters
+            minlength: 1,
+            maxlangth: 280
+        },
+        createdAt: {
+            type: Date,
+            // default value is current timestamp
+            default: Date.now,
+            // getter method to format the timestamp on query
+            get: (time) => formatTimeStamp(time)
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        // Array of nested documents created with the reactionSchema
+        reactions: [reactionSchema]
+    },
+    {
+        toJSON: {
+            getters: true,
+            virtuals: true
+        },
+        id: false
+    }
+);
+
+// retrieves the length of the thought's reactions
+thoughtSchema.virtual('reactionCount').get(function () {
+    return this.reactions.length;
+})
+
+
 // Thought:
 
 // thoughtText
