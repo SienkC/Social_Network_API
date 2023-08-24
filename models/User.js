@@ -36,11 +36,19 @@ const userSchema = new Schema(
     },
     {
         toJSON: {
-            getters: true
-        }
+            getters: true,
+            virtuals: true
+        },
+        id: false
     }
 );
 
+// create virtual that tracks number of friends
+userSchema.virtual('friendCount').get(function () {
+    return this.friends.length;
+});
+
+// initialize user model
 const User = model('user', userSchema);
 
 module.exports = User;
