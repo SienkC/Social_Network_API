@@ -21,6 +21,8 @@ router.route('/:id').get(getSingleThought).put(updateThought).delete(removeThoug
 router.route('/:id/reactions').post(createReaction).delete(removeReaction);
 
 
+module.exports = router;
+
 
 // GET to get all thoughts
 
