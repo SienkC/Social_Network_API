@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 
 // get util for formatting date
-const formatTimeStamp = require('');
+const formatTimeStamp = require('../utils/formatTimeStamp');
 
 
 const thoughtSchema = new Schema(
