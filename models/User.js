@@ -1,3 +1,51 @@
+const { Schema, model } = require('mongoose');
+
+
+const userSchema = new Schema(
+    {
+        username: {
+            type: String,
+            required: true,
+            // check for unique
+            unique: true,
+            // trim off whitespace
+            trim: true
+        },
+        email: {
+            type: String,
+            required: true,
+            // check for unique
+            unique: true,
+            // check for valid email using Regex
+            match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+        },
+        // Array of _id values referencing the Thought model
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'thought'
+            }
+        ],
+        // Array of _id values referencing the User model (self-reference)
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'user'
+            }
+        ]
+    },
+    {
+        toJSON: {
+            getters: true
+        }
+    }
+);
+
+const User = model('user', userSchema);
+
+module.exports = User;
+
+
 // User:
 
 // username
