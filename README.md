@@ -49,6 +49,9 @@ An API for a social network web application where users can share their thoughts
 
    Delete a reaction from a thought using the same URL as above and adding the reaction id on the end.
 
+   [Social Network API Walkthrough.webm](https://github.com/SienkC/Social_Network_API/assets/133715604/3979cb3d-fa90-45bb-8718-c343b43776b3)
+
+
   ## Credits <a id="credits"></a>
 
   Base code provided by the boot camp creators at [UCF Boot Camps](https://bootcamp.ce.ucf.edu/).
